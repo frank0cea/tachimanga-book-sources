@@ -62,6 +62,7 @@ def main() -> None:
                 "lang": item["lang"],
                 "code": item["code"],
                 "version": item["version"],
+                "nsfw": 0,
                 "sources": sources,
             }
         )

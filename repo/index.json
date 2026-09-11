@@ -14,7 +14,8 @@
         "baseUrl": "https://baozimh.org",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   },
   {
     "name": "Tachiyomi: 如漫画",
@@ -31,7 +32,8 @@
         "baseUrl": "https://www.rumanhua.org",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   },
   {
     "name": "Tachiyomi: 拷贝漫画",
@@ -48,7 +50,8 @@
         "baseUrl": "https://www.copy3000.com",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   },
   {
     "name": "Tachiyomi: 可乐漫画",
@@ -65,7 +68,8 @@
         "baseUrl": "https://www.yoyomanga.com",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   },
   {
     "name": "Tachiyomi: Mangabz",
@@ -89,7 +93,8 @@
         "baseUrl": "https://www.xmanhua.com",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   },
   {
     "name": "Tachiyomi: 极速漫画",
@@ -106,7 +111,8 @@
         "baseUrl": "https://www.1kkk.com",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   },
   {
     "name": "Tachiyomi: 风之动漫",
@@ -123,7 +129,8 @@
         "baseUrl": "https://www.fffdm.com",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   },
   {
     "name": "Tachiyomi: MyComic",
@@ -140,7 +147,8 @@
         "baseUrl": "https://mycomic.com",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   },
   {
     "name": "Tachiyomi: 咚漫",
@@ -157,6 +165,7 @@
         "baseUrl": "https://www.dongmanmanhua.cn",
         "versionId": 1
       }
-    ]
+    ],
+    "nsfw": 0
   }
 ]
