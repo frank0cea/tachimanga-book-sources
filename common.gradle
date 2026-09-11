@@ -1,0 +1,96 @@
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "org.jetbrains.kotlin.plugin.serialization"
+
+assert extName != null
+assert pkgNameSuffix != null
+assert extClass != null
+assert extVersionCode != null
+
+android {
+    namespace "eu.kanade.tachiyomi.extension"
+    compileSdk 34
+
+    sourceSets {
+        main {
+            manifest.srcFile "${rootDir}/common/AndroidManifest.xml"
+            java.srcDirs = ["src"]
+            kotlin.srcDirs = ["src"]
+            res.srcDirs = ["res"]
+            assets.srcDirs = ["assets"]
+        }
+    }
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 34
+        applicationId "eu.kanade.tachiyomi.extension"
+        applicationIdSuffix ".${pkgNameSuffix}"
+        versionCode extVersionCode
+        versionName "1.4.${extVersionCode}"
+        manifestPlaceholders = [
+            appName : "Tachiyomi: ${extName}",
+            extClass: extClass,
+            nsfw    : project.ext.find("isNsfw") ? 1 : 0,
+        ]
+    }
+
+    signingConfigs {
+        release {
+            def keystore = rootProject.file("signingkey.jks")
+            if (keystore.exists()) {
+                storeFile keystore
+                storePassword System.getenv("KEY_STORE_PASSWORD")
+                keyAlias System.getenv("ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            if (rootProject.file("signingkey.jks").exists()) {
+                signingConfig signingConfigs.release
+            }
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    dependenciesInfo {
+        includeInApk false
+    }
+
+    buildFeatures {
+        aidl false
+        renderScript false
+        shaders false
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
+android.applicationVariants.configureEach { variant ->
+    variant.outputs.configureEach {
+        outputFileName = "tachiyomi-${pkgNameSuffix}-v${variant.versionName}.apk"
+    }
+}
+
+dependencies {
+    compileOnly project(":extensions-lib")
+    compileOnly "com.squareup.okhttp3:okhttp:4.12.0"
+    compileOnly "io.reactivex:rxjava:1.3.8"
+    compileOnly "org.jsoup:jsoup:1.17.2"
+    compileOnly "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
+}

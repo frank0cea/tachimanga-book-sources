@@ -1,0 +1,7 @@
+ext {
+    extName = "咚漫"
+    pkgNameSuffix = "zh.dongmanmanhua"
+    extClass = ".DongmanManhua"
+    extVersionCode = 1
+}
+apply from: "$rootDir/common.gradle"

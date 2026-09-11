@@ -1,0 +1,7 @@
+ext {
+    extName = "如漫画"
+    pkgNameSuffix = "zh.rumanhua"
+    extClass = ".Rumanhua"
+    extVersionCode = 1
+}
+apply from: "$rootDir/common.gradle"

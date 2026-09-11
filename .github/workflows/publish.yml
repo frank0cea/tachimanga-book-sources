@@ -1,0 +1,47 @@
+name: Build Tachimanga repo
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Assemble release APKs
+        run: ./gradlew assembleRelease --stacktrace
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate index.min.json
+        run: python scripts/generate_index.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tachimanga-repo
+          path: repo-dist
+
+      - name: Publish GitHub Pages
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: repo-dist

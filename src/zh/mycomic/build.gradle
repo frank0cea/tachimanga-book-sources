@@ -1,0 +1,7 @@
+ext {
+    extName = "MyComic"
+    pkgNameSuffix = "zh.mycomic"
+    extClass = ".MyComic"
+    extVersionCode = 1
+}
+apply from: "$rootDir/common.gradle"

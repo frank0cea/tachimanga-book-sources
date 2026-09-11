@@ -1,0 +1,7 @@
+ext {
+    extName = "Mangabz"
+    pkgNameSuffix = "zh.mangabz"
+    extClass = ".MangabzFactory"
+    extVersionCode = 1
+}
+apply from: "$rootDir/common.gradle"

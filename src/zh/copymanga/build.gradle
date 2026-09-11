@@ -1,0 +1,7 @@
+ext {
+    extName = "拷贝漫画"
+    pkgNameSuffix = "zh.copymanga"
+    extClass = ".CopyManga"
+    extVersionCode = 1
+}
+apply from: "$rootDir/common.gradle"

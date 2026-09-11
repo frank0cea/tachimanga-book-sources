@@ -1,0 +1,7 @@
+ext {
+    extName = "包子漫画"
+    pkgNameSuffix = "zh.baozimhorg"
+    extClass = ".BaozimhOrg"
+    extVersionCode = 1
+}
+apply from: "$rootDir/common.gradle"

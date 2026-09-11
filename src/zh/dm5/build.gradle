@@ -1,0 +1,7 @@
+ext {
+    extName = "极速漫画"
+    pkgNameSuffix = "zh.dm5"
+    extClass = ".Dm5"
+    extVersionCode = 1
+}
+apply from: "$rootDir/common.gradle"

@@ -1,0 +1,30 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+rootProject.name = "tachimanga-book-sources"
+
+include "extensions-lib"
+project(":extensions-lib").projectDir = file("libs/extensions-lib")
+
+def srcDir = file("src")
+srcDir.eachDir { langDir ->
+    langDir.eachDir { extDir ->
+        def id = "src-${langDir.name}-${extDir.name}"
+        include id
+        project(":${id}").projectDir = extDir
+    }
+}

@@ -1,0 +1,7 @@
+ext {
+    extName = "风之动漫"
+    pkgNameSuffix = "zh.fffdm"
+    extClass = ".Fffdm"
+    extVersionCode = 1
+}
+apply from: "$rootDir/common.gradle"
